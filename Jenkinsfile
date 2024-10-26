@@ -15,7 +15,7 @@ pipeline {
         stage('Build Image') {
             steps {
                 script {
-                    sh 'docker build -t docker.io/ashishnair/node:latest .'
+                    sh 'podman build -t docker.io/ashishnair/node:latest .'
                 }
             }
         }
@@ -24,7 +24,7 @@ pipeline {
             steps {
                 script {
                     withDockerRegistry([credentialsId: 'docker', url: '']) {
-                        sh 'docker push docker.io/ashishnair/node:latest'
+                        sh 'podman push docker.io/ashishnair/node:latest'
                     }
                 }
             }
